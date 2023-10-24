@@ -44,7 +44,7 @@ public class Add_Customer extends javax.swing.JInternalFrame {
             if(rs.getString("MAX(CustomerID)")==null)
                 custID.setText("CS001");
             else{
-                long id = Long.parseLong(rs.getString("MAX(CustomerID)".substring(2)));
+                long id = Long.parseLong(rs.getString("MAX(CustomerID)").substring(2,rs.getString("MAX(CustomerID)").length()));
                 id++;
                 custID.setText("CS"+String.format("%03d", id));
             }

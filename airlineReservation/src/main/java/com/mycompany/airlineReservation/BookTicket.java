@@ -47,7 +47,7 @@ public class BookTicket extends javax.swing.JInternalFrame {
             if(rs.getString("MAX(TicketID)")==null)
                 ID.setText("TK001");
             else{
-                long id = Long.parseLong(rs.getString("MAX(TicketID)".substring(2)));
+                long id = Long.parseLong(rs.getString("MAX(TicketID)").substring(2,rs.getString("MAX(TicketID)").length()));
                 id++;
                 ID.setText("TK"+String.format("%03d", id));
             }
@@ -231,13 +231,13 @@ public class BookTicket extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(fare, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Fare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Fare, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -270,7 +270,7 @@ public class BookTicket extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(contact, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(contact, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -444,7 +444,7 @@ public class BookTicket extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel7)
                                 .addGap(38, 38, 38)
                                 .addComponent(ID)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -570,7 +570,6 @@ public class BookTicket extends javax.swing.JInternalFrame {
                 DFT.addRow(v);
             }
             
-            
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(BookTicket.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -636,14 +635,14 @@ public class BookTicket extends javax.swing.JInternalFrame {
             
             pre = con.prepareStatement("insert into ticket(TicketID,FlightID,CustomerID,Arrival,Departure,FirstName,LastName,Contact,Gender)values(?,?,?,?,?,?,?,?,?)");
             pre.setString(1,TicketID);
-            pre.setString(1,flightID);
-            pre.setString(1,CustomerID);
-            pre.setString(1,Arrival);
-            pre.setString(1,Departure);
-            pre.setString(1,FirstName);
-            pre.setString(1,LastName);
-            pre.setString(1,Contact);
-            pre.setString(1,Gender);
+            pre.setString(2,flightID);
+            pre.setString(3,CustomerID);
+            pre.setString(4,Arrival);
+            pre.setString(5,Departure);
+            pre.setString(6,FirstName);
+            pre.setString(7,LastName);
+            pre.setString(8,Contact);
+            pre.setString(9,Gender);
             
             pre.executeUpdate();
             JOptionPane.showMessageDialog(null,"Ticket Booked Succesfully");

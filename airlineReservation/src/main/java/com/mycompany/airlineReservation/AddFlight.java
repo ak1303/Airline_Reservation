@@ -42,10 +42,10 @@ public class AddFlight extends javax.swing.JInternalFrame {
             ResultSet rs = pre.executeQuery();
             rs.next();
             
-            if(rs.getString("MAX(CustomerID)")==null)
+            if(rs.getString("MAX(FlightID)")==null)
                 flightId.setText("FL001");
             else{
-                long id = Long.parseLong(rs.getString("MAX(FlightID)".substring(2)));
+                long id = Long.parseLong(rs.getString("MAX(FlightID)").substring(2,rs.getString("MAX(FlightID)").length()));
                 id++;
                 flightId.setText("FL"+String.format("%03d", id));
             }

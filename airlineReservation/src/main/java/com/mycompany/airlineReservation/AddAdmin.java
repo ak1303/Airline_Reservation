@@ -40,10 +40,11 @@ public class AddAdmin extends javax.swing.JInternalFrame {
             ResultSet rs = pre.executeQuery();
             rs.next();
             
-            if(rs.getString("MAX(AdminID)")==null)
+            if(rs.getString("MAX(AdminID)")==null){
                 adminId.setText("AD001");
+            }  
             else{
-                long id = Long.parseLong(rs.getString("MAX(AdminID)".substring(2)));
+                long id = Long.parseLong(rs.getString("MAX(AdminID)").substring(2,rs.getString("MAX(AdminID)").length()));
                 id++;
                 adminId.setText("AD"+String.format("%03d", id));
             }
@@ -104,6 +105,12 @@ public class AddAdmin extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Password");
+
+        adminId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminIdActionPerformed(evt);
+            }
+        });
 
         firstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -284,6 +291,10 @@ public class AddAdmin extends javax.swing.JInternalFrame {
     private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameActionPerformed
+
+    private void adminIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adminIdActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

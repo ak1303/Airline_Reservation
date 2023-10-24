@@ -113,12 +113,12 @@
                               <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="departure" min="-2" pref="72" max="-2" attributes="0"/>
-                              <Component id="arrival" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
-                              <Component id="contact" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="contact" alignment="0" pref="113" max="32767" attributes="0"/>
+                              <Component id="departure" alignment="0" max="32767" attributes="0"/>
+                              <Component id="arrival" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="58" max="32767" attributes="0"/>
+                          <EmptySpace pref="17" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
